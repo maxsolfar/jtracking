@@ -1,6 +1,14 @@
+import { User } from "../models/User.js";
+
 const authControllers = {
   register: async (req, res, next) => {
-    res.send("Register User");
+    const {name, email, password} = req.body;
+    try {
+      const newUser = await User.create({name, email, password});
+      res.status(201).json({ newUser });
+    } catch (error) {
+      console.log(error);
+    }
   },
   login: async (req, res, next) => {
     res.send("Login User");
