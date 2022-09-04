@@ -4,6 +4,5 @@
 
 Deploy: Project in Action - in process
 
-<p align='center'>
-    https://user-images.githubusercontent.com/65838616/188296860-131468ec-3057-4538-93f1-03b890ab709b.mp4
-</p>
+https://user-images.githubusercontent.com/65838616/188296997-09e23838-d7c9-454e-a88d-ed765f34e4b0.mp4
+
