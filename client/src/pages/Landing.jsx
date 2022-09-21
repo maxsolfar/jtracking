@@ -17,7 +17,7 @@ const Landing = () => {
           <p>
           I'm baby franzen biodiesel ennui XOXO seitan DSA godard asymmetrical keffiyeh tousled knausgaard street art retro. Flexitarian keytar photo booth, fanny pack intelligentsia tofu shoreditch copper mug tote bag woke XOXO vibecession pop-up retro jianbing.
           </p>
-          <Link to="/auth" className="btn btn-hero">Login/Register</Link>
+          <Link to="/auth" className="btn btn-hero">Login | Register</Link>
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
