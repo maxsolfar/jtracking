@@ -68,6 +68,7 @@ const Register = () => {
             name="confirmPassword"
             value={values.confirmPassword}
             handleChange={handleChange}
+            labelText="Confirm Password"
           />
         )}
         <button type="submit" className="btn btn-block">

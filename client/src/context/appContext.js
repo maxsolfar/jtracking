@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
       dispatch(
         {type:CLEAR_ALERT}
       );
-    }, 3000);
+    }, 2200);
   };
 
   return(
