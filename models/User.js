@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
 const { Schema, model } = mongoose;
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     email:{
       type: String,
       required: [true,"Please provide email"],
@@ -18,6 +21,7 @@ const userSchema = new Schema({
       type: String,
       required: [true,"Please provide password"],
       required: true,
+      select: false
     },
     name:{
       type: String,
@@ -29,16 +33,27 @@ const userSchema = new Schema({
     lastName:{
       type: String,
       trim: true,
-      maxlength: 30
+      maxlength: 30,
+      default: ""
     },
     location:{
       type: String,
       trim: true,
-      maxlength: 30
+      maxlength: 30,
+      default: ""
     }
 },{
   timestamps: true,
   versionKey: false
 });
 
-export const User = model("User", userSchema);
+UserSchema.pre("save", async function(){
+  const saltPassword = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, saltPassword);
+});
+
+UserSchema.methods.createJWT = function(){
+  return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_LIFETIME });
+};
+
+export const User = model("User", UserSchema);
