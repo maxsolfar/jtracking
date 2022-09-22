@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/appContext";
 import { Logo, FormRow, Alert } from "../components";
 import Wrapper from "../assets/wrappers/AuthPage";
@@ -13,7 +14,8 @@ const initialState = {
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
-  const { isLoading, showAlert, displayAlert } = useAppContext();
+  const navigate = useNavigate();
+  const { user, isLoading, showAlert, displayAlert, registerUser } = useAppContext();
 
   const toggleMember = () => {
     setValues({...values, isMember: !values.isMember});
@@ -30,7 +32,22 @@ const Register = () => {
       displayAlert();
       return;
     } 
+    const currentUser = {name, email, password, confirmPassword};
+    if(isMember){
+      console.log("Already a member")
+    }
+    else{
+      registerUser(currentUser);
+    }
   };
+
+  useEffect(()=>{
+    if(user){
+      setTimeout(()=>{
+        navigate("/dashboard");
+      }, 2500)
+    }
+  },[user, navigate])
 
   return (
     <Wrapper className="full-page">
@@ -49,7 +66,7 @@ const Register = () => {
         )}
         {/* email field */}
         <FormRow
-          type="email"
+          type="text"
           name="email"
           value={values.email}
           handleChange={handleChange}
@@ -71,7 +88,7 @@ const Register = () => {
             labelText="Confirm Password"
           />
         )}
-        <button type="submit" className="btn btn-block">
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
           {values.isMember ? "Login" : "Sign Up"}
         </button>
         <p>
