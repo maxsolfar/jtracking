@@ -8,7 +8,9 @@ import morgan from "morgan";
 
 app.use(cors());
 app.use(express.json());
-app.use(morgan('dev'));
+if(process.env.NODE_ENV !== "production")  {
+  app.use(morgan('dev'));
+}
 
 //Routes
 import routes from "./routes/index.routes.js";
