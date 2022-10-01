@@ -47,13 +47,18 @@ const UserSchema = new Schema({
   versionKey: false
 });
 
-UserSchema.pre("save", async function(){
+UserSchema.pre("save", async function() {
   const saltPassword = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, saltPassword);
 });
 
-UserSchema.methods.createJWT = function(){
+UserSchema.methods.createJWT = function() {
   return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_LIFETIME });
 };
+
+UserSchema.methods.comparePassword = async function (entryPassword) {
+  const isMatch = await bcrypt.compare(entryPassword, this.password);
+  return isMatch;
+}
 
 export const User = model("User", UserSchema);
