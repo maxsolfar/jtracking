@@ -149,7 +149,7 @@ ul {
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
-  padding: 0.7rem 0.75rem;
+  padding: 1.1rem 1.35rem;
   box-shadow: var(--shadow-2);
   transition: var(--transition);
   text-transform: capitalize;
