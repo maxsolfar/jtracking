@@ -11,7 +11,10 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   TOGGLE_SIDEBAR,
-  LOGOUT_USER
+  LOGOUT_USER,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
+  UPDATE_USER_BEGIN,
 } from './actions';
 
 //checking if user exist in localStorage
@@ -34,6 +37,31 @@ export const initialState = {
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
+  const authFetch = axios.create({
+    baseURL: '/api/v1',
+  });
+  authFetch.interceptors.request.use(
+    (config) => {
+      config.headers.common['Authorization'] = `Bearer ${state.token}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  authFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      console.log(error.response);
+      if (error.response.status === 401) {
+        logoutUser();
+      }
+      return Promise.reject(error);
+    }
+  );
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
@@ -91,13 +119,35 @@ const AppProvider = ({ children }) => {
   };
 
   const toggleSidebar = () => {
-    dispatch({type: TOGGLE_SIDEBAR})
+    dispatch({ type: TOGGLE_SIDEBAR });
   };
 
   const logoutUser = () => {
-    dispatch({type: LOGOUT_USER});
+    dispatch({ type: LOGOUT_USER });
     removeUserFromLocalStorage();
-  }
+  };
+
+  const updateUser = async (currentUser) => {
+    dispatch({ type: UPDATE_USER_BEGIN });
+    try {
+      const { data } = await authFetch.patch('http://localhost:5000/api/v1/auth/update-user', currentUser);
+      const { user, location, token } = data;
+
+      dispatch({
+        type: UPDATE_USER_SUCCESS,
+        payload: { user, location, token },
+      });
+      addUserToLocalStorage({ user, location, token: initialState.token });
+    } catch (error) {
+      if(error.response.status !== 401){
+        dispatch({
+          type: UPDATE_USER_ERROR,
+          payload: { msg: error.response.data.msg },
+        });
+      }
+    }
+    clearAlert();
+  };
 
   const addUserToLocalStorage = ({ user, token, location }) => {
     localStorage.setItem('user', JSON.stringify(user));
@@ -120,7 +170,8 @@ const AppProvider = ({ children }) => {
         registerUser,
         loginUser,
         toggleSidebar,
-        logoutUser
+        logoutUser,
+        updateUser,
       }}
     >
       {children}
