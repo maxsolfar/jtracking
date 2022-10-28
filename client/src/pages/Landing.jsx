@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import main from "../assets/images/main-alternative.svg";
-import Wrapper from "../assets/wrappers/LandingPage";
+/* import Wrapper from "../assets/wrappers/LandingPage"; */
 import { Logo } from "../components";
+import { Stack, Heading, Container, ColorModeContext, useColorMode } from '@chakra-ui/react';
 
 const Landing = () => {
   return (
-    <Wrapper>
+    <Stack direction={"row"}>
       <nav>
         <Logo/>
       </nav>
@@ -22,7 +23,7 @@ const Landing = () => {
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
 
-    </Wrapper>
+    </Stack>
   )
 }
 

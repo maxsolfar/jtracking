@@ -25,8 +25,8 @@ function App() {
           <Route path="add-job" element={<AddJob />} />
           <Route path="profile" element={<Profile />} />
         </Route>
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Auth />} />
+        {/* <Route path="/" element={<Landing />} /> */}
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
