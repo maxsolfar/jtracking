@@ -1,5 +1,5 @@
 {
-  "name": "jobs-hunter",
+  "name": "jtracking",
   "version": "1.0.0",
   "description": "#### Track Your Job Search",
   "main": "server.js",
@@ -13,7 +13,7 @@
     "nodejs",
     "express",
     "react",
-    "styledcomponents",
+    "chakraUI",
     "contextAPI"
   ],
   "author": "Máximo Solis Farfán",
