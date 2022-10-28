@@ -1,0 +1,40 @@
+.nav-link {
+  transition: 0.5s ease-in-out all;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  opacity: .8;
+  width: 100%;
+}
+.nav:hover{
+  background-color: var(--chakra-colors-brand-dark);
+}
+.nav-link:hover {
+  padding-left: 1.2rem;
+  opacity: 1;
+}
+.nav-link:hover .icon {
+  color: var(--chakra-colors-brand-secondary);
+}
+.icon {
+  font-size: 1.6rem;
+  margin-right: 1rem;
+  display: grid;
+  place-items: center;
+  transition: 0.5s ease-in-out all;
+}
+.active {
+  /* color: var(--chakra-colors-brand-primary); */
+  opacity: 1;
+}
+.active .icon {
+  color: var(--chakra-colors-brand-secondary);
+}
+
+#showSidebar {
+  z-index: 99;
+  opacity: 1;
+}
