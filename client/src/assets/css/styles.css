@@ -1,40 +1,97 @@
 .nav-link {
   transition: 0.5s ease-in-out all;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: .92rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 8px 0;
   opacity: .8;
   width: 100%;
-}
-.nav:hover{
-  background-color: var(--chakra-colors-brand-dark);
+  padding-left: 22%;
+  letter-spacing: .08rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .nav-link:hover {
-  padding-left: 1.2rem;
+  padding-left: 32%;
   opacity: 1;
 }
 .nav-link:hover .icon {
   color: var(--chakra-colors-brand-secondary);
 }
 .icon {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin-right: 1rem;
   display: grid;
   place-items: center;
   transition: 0.5s ease-in-out all;
 }
-.active {
-  /* color: var(--chakra-colors-brand-primary); */
+.active, .activeLight {
+  padding-left: 32%;
   opacity: 1;
+  border-right: 6px solid var(--chakra-colors-brand-secondary);
 }
-.active .icon {
+
+.active {
+  background-color: var(--chakra-colors-brand-dark);
+}
+
+.activeLight {
+  background-color: var(--chakra-colors-brand-white);
+}
+
+.active .icon, .activeLight .icon {
   color: var(--chakra-colors-brand-secondary);
 }
 
 #showSidebar {
   z-index: 99;
   opacity: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-link{
+    width: 70%;
+    padding-left: 18%;
+  }
+  .nav-link:hover {
+    padding-left: 20%;
+    border-bottom: 1px solid var(--chakra-colors-brand-secondary);
+  }
+  .active, .activeLight {
+    padding-left: 20%;
+    border-right: none;
+    border-bottom: 1px solid var(--chakra-colors-brand-secondary);
+  }
+  .active {
+    background-color:transparent
+  }
+  
+  .activeLight {
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 650px) and (max-width: 1180px) {
+  .nav-link{
+    width: 40%;
+    padding-left: 12%;
+  }
+  .nav-link:hover {
+    padding-left: 15%;
+    border-bottom: 1px solid var(--chakra-colors-brand-secondary);
+  }
+  .active, .activeLight {
+    padding-left: 15%;
+    border-right: none;
+    border-bottom: 1px solid var(--chakra-colors-brand-secondary);
+  }
+  .active {
+    background-color:transparent
+  }
+  
+  .activeLight {
+    background-color: transparent;
+  }
 }

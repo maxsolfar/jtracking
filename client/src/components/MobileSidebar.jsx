@@ -15,7 +15,7 @@ const SideBar = () => {
       display={["flex","flex","flex","none"]}
     >
       <Flex
-        bg={colorMode==="dark" ? 'brand.dark' : "brand.clear"}
+        bg={colorMode==="dark" ? 'brand.dark' : "brand.white"}
         position={'fixed'}
         inset={'0'}
         justifyContent={'center'}
@@ -44,7 +44,7 @@ const SideBar = () => {
           >
             <FaTimes />
           </Button>
-          <Flex as={'header'} justifyContent={"center"} mt={16}>
+          <Flex as={'header'} justifyContent={"center"} mt={16} mb={8}>
             <Logo />
           </Flex>
           <NavLinks toggleSidebar={toggleSidebar} />

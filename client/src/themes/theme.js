@@ -14,7 +14,7 @@ const theme = extendTheme({
       secondary: '#3F62FE',
       accent: '#FF4B96',
       white: '#ffffff',
-      clear: '#f9f9f9',
+      clear: '#eef1ff',
       dark: '#1A202C',
       danger: "#E46369",
       success: "#07C19C",
@@ -30,7 +30,7 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-/*         bg: mode('#212121', '#151D30'), */
+        /* bg: mode('#212121', '#151D30'), */
       },
     },
   },
