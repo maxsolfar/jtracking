@@ -1,18 +1,24 @@
-const FormRow = ({type, name, value, handleChange, labelText}) => {
-  return (
-    <div className="form-row">
-      <label htmlFor={name} className="form-label">
-        {labelText || name}
-      </label>
+import {
+  FormControl,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
 
-      <input
+const FormRow = ({ type, name, value, handleChange, labelText }) => {
+  return (
+    <FormControl>
+      <FormLabel htmlFor={name} fontSize={'sm'} mb={1} opacity={.9}>
+        {labelText || name}
+      </FormLabel>
+
+      <Input
         type={type}
         value={value}
         name={name}
         onChange={handleChange}
-        className="form-input"
+        placeholder={`type your ${name}`}
       />
-    </div>
+    </FormControl>
   );
 };
 

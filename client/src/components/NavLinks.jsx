@@ -1,27 +1,47 @@
-import React from 'react';
+import { Flex, useColorMode } from "@chakra-ui/react";
 import { NavLink } from 'react-router-dom';
 import links from '../utils/links';
+import '../assets/css/styles.css';
+import { motion } from 'framer-motion';
 
 const NavLinks = ({ toggleSidebar }) => {
+  const { colorMode } = useColorMode();
   return (
-    <section className="nav-links">
-      {links.map((link) => {
+    <Flex
+      pt={'2rem'}
+      direction={'column'}
+      w={'100%'}
+      alignItems={'center'}
+      justifyContent={'center'}
+    >
+      {links.map((link, index) => {
         const { text, path, id, icon } = link;
         return (
-          <NavLink
-            to={path}
-            className={({ isActive }) =>
-              isActive ? 'nav-link active' : 'nav-link'
-            }
-            key={id}
-            onClick={toggleSidebar}
+          <Flex
+            key={index}
+            as={motion.div}
+            alignItems={'center'}
+            py={4}
+            textTransform={'capitalize'}
+            justifyContent={'center'}
+            _hover={colorMode === "dark" ? { background:"brand.dark" } : { background:"brand.white" }}
+            w={"100%"}
           >
-            <span className="icon">{icon}</span>
-            {text}
-          </NavLink>
+            <NavLink
+              to={path}
+              className={({ isActive }) =>
+                isActive ? 'nav-link active' : 'nav-link'
+              }
+              key={id}
+              onClick={toggleSidebar}
+            >
+              <span className="icon">{icon}</span>
+              {text}
+            </NavLink>
+          </Flex>
         );
       })}
-    </section>
+    </Flex>
   );
 };
 
