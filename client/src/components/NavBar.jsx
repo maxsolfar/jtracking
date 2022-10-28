@@ -15,70 +15,82 @@ import {
   Button,
   Box,
   Heading,
+  InputGroup,
+  InputLeftElement,
+  InputLeftAddon,
+  Input,
+  HStack,
+  useColorMode,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { useEffect, useState } from 'react';
+import { BsSearch } from 'react-icons/bs';
 
 const NavBar = () => {
   const { user, logoutUser, toggleSidebar } = useAppContext();
   const { showSidebar } = useAppContext();
+  const { colorMode } = useColorMode();
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleResize = () => {
     setWidth(window.innerWidth);
   };
-  
-  useEffect(()=>{
-    window.addEventListener("resize", handleResize);
-  },[])
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <Flex
-      w={'100%'}
-      alignItems={'center'}
-      justifyContent={'center'}
-      shadow={'sm'}
-      p={3}
-    >
+    <Flex w={'100%'} alignItems={'center'} justifyContent={'center'} p={3}>
       {console.log(width)}
       <Flex
         as={motion.div}
         animate={
-          width > 1024 ? {
-            width: showSidebar ? 'calc(94vw - 250px)' : '80vw',
-          }
-          : {
-            width: showSidebar ? "88vw" : "90vw",
-          }
+          width > 1024
+            ? {
+                width: showSidebar ? 'calc(94vw - 250px)' : '80vw',
+              }
+            : {
+                width: showSidebar ? '88vw' : '90vw',
+              }
         }
         alignItems={'center'}
         justifyContent={'space-between'}
       >
-        <Button
-          variant={'outline'}
-          fontSize={'2xl'}
-          color={'brand.secondary'}
-          cursor={'pointer'}
-          display={'flex'}
-          alignItems={'center'}
-          onClick={toggleSidebar}
-        >
-          <FaAlignLeft />
-        </Button>
+        <HStack>
+          <Button
+            variant={'outline'}
+            fontSize={'2xl'}
+            color={'brand.secondary'}
+            cursor={'pointer'}
+            display={'flex'}
+            alignItems={'center'}
+            onClick={toggleSidebar}
+          >
+            <FaAlignLeft />
+          </Button>
+          <InputGroup w={'sm'} display={['none', 'none', 'none', 'flex']} >
+            <InputLeftElement
+              pointerEvents="none"
+              children={<BsSearch color="brand.clear" opacity={0.5} />}
+            />
+            {/* <InputLeftAddon color={"brand.clear"}  children={<BsSearch />} bg={"brand.secondary"} /> */}
+            <Input focusBorderColor='brand.secondary' type="tel" placeholder="Search here..." bg={colorMode==="dark" ? "brand.primary": "brand.clear"} />
+          </InputGroup>
+        </HStack>
 
-        <Box ml={[4,4,4,0]}>
-          <Box display={["flex","flex", "flex", "none"]}><Logo /></Box>
-          <Heading size={"md"} className="logo-text" display={["none","none", "none", "block"]}>Dashboard</Heading>
+        <Box display={['flex', 'flex', 'flex', 'none']} ml={[4, 4, 4, 0]}>
+          <Logo />
         </Box>
+
         <Flex alignItems={'center'} gap={4}>
           <Menu isLazy>
             <MenuButton>
               <Avatar
                 size="md"
                 rounded="full"
-                border={'1px solid rgba(255,255,255,.5)'}
-                src={'https://avatars2.githubusercontent.com/u/37842853?v=3'}
+                src={'https://i.imgur.com/uhQVGnD.png'}
               />
             </MenuButton>
             <MenuList zIndex={5}>

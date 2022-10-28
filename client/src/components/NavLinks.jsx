@@ -8,11 +8,11 @@ const NavLinks = ({ toggleSidebar }) => {
   const { colorMode } = useColorMode();
   return (
     <Flex
-      pt={'2rem'}
       direction={'column'}
       w={'100%'}
       alignItems={'center'}
       justifyContent={'center'}
+
     >
       {links.map((link, index) => {
         const { text, path, id, icon } = link;
@@ -21,7 +21,7 @@ const NavLinks = ({ toggleSidebar }) => {
             key={index}
             as={motion.div}
             alignItems={'center'}
-            py={4}
+/*             py={4} */
             textTransform={'capitalize'}
             justifyContent={'center'}
             _hover={colorMode === "dark" ? { background:"brand.dark" } : { background:"brand.white" }}
@@ -30,7 +30,7 @@ const NavLinks = ({ toggleSidebar }) => {
             <NavLink
               to={path}
               className={({ isActive }) =>
-                isActive ? 'nav-link active' : 'nav-link'
+                colorMode === "dark" ? isActive ? 'nav-link active' : 'nav-link' : isActive ? 'nav-link activeLight' : 'nav-link'
               }
               key={id}
               onClick={toggleSidebar}
