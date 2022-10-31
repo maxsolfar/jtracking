@@ -12,7 +12,7 @@ import {
   Heading
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { MdOutlineArrowForwardIos, MdOutlineContactSupport } from "react-icons/md";
 
 const animationSidebar = keyframes`
   0% { margin-left: -250px;}
@@ -71,7 +71,7 @@ const BigSideBar = () => {
             <Container w={'82%'} borderWidth={"1px"} textAlign="center" borderRadius={8} py={4} px={2}>
               <Heading fontSize={"sm"} mb={2} fontWeight={"semibold"}> Need Help?</Heading>
               <Text fontSize={"xs"} mb={2}>We will answer all your questions</Text>
-              <Button colorScheme={"mainBlue"} rightIcon={<MdOutlineArrowForwardIos/>} size={"sm"} variant={"outline"} fontWeight={"normal"}>Contact Us</Button>
+              <Button leftIcon={<MdOutlineContactSupport/>} colorScheme={"mainBlue"} rightIcon={<MdOutlineArrowForwardIos/>} size={"sm"} variant={"outline"} fontWeight={"normal"}>Contact Us</Button>
             </Container>
           </Flex>
         </Box>

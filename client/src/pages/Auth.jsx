@@ -71,7 +71,7 @@ const Auth = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/dashboard/');
       }, 2500);
     }
   }, [user, navigate]);

@@ -25,6 +25,7 @@ const SharedLayout = () => {
       <VStack overflowX={"hidden"}>
         <NavBar />
         <Box
+          py={6}
           as={motion.div}
           animate={
             width > 1024
@@ -35,7 +36,7 @@ const SharedLayout = () => {
                   width: showSidebar ? '88vw' : '90vw',
                 }
           }
-          border={'1px solid #fff'}
+/*           border={'1px solid #fff'} */
         >
           <Outlet />
         </Box>

@@ -2,14 +2,14 @@ import AddJob from "./AddJob";
 import AllJobs from "./AllJobs";
 import Profile from "./Profile";
 import SharedLayout from "./SharedLayout";
-import Stats from "./Stats";
 import Overview from "./Overview";
+import Settings from "./Settings";
 
 export{
   AddJob,
   AllJobs,
   Profile,
-  Stats,
   SharedLayout,
-  Overview
+  Overview,
+  Settings
 }
