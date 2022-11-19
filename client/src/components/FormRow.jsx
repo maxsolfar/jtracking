@@ -2,9 +2,11 @@ import {
   FormControl,
   FormLabel,
   Input,
+  useColorMode
 } from '@chakra-ui/react';
 
 const FormRow = ({ type, name, value, handleChange, labelText }) => {
+  const { colorMode } = useColorMode();
   return (
     <FormControl>
       <FormLabel htmlFor={name} fontSize={'sm'} mb={1} opacity={.9}>
@@ -16,7 +18,10 @@ const FormRow = ({ type, name, value, handleChange, labelText }) => {
         value={value}
         name={name}
         onChange={handleChange}
-        placeholder={`type your ${name}`}
+        placeholder={`Type your ${name}`}
+        focusBorderColor='brand.secondary'
+        border={"1px"}
+        borderColor={colorMode==="dark"? "rgb(238, 241, 255, .1)" :"rgb(26, 32, 44, .15)"}
       />
     </FormControl>
   );
