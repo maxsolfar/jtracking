@@ -15,6 +15,7 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
   UPDATE_USER_BEGIN,
+  HANDLE_CHANGE,
 } from './actions';
 
 //checking if user exist in localStorage
@@ -30,15 +31,23 @@ export const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token || null,
   userLocation: userLocation || '',
-  jobLocation: userLocation || '',
   showSidebar: false,
+  isEditing: false,
+  editJobId: '',
+  position: '',
+  company: '',
+  jobLocation: userLocation || '',
+  jobTypeOptions: ['Full-time', 'Part-time', 'Remote', 'Internship', 'Hybrid'],
+  jobType: 'Full-time',
+  statusOptions: ['Pending', 'Interview', 'Declined'],
+  status: 'Pending',
 };
 
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const authFetch = axios.create({
-    baseURL: '/api/v1',
+    baseURL: 'http://localhost:5000/api/v1',
   });
   authFetch.interceptors.request.use(
     (config) => {
@@ -55,7 +64,6 @@ const AppProvider = ({ children }) => {
       return response;
     },
     (error) => {
-      console.log(error.response);
       if (error.response.status === 401) {
         logoutUser();
       }
@@ -130,24 +138,33 @@ const AppProvider = ({ children }) => {
   const updateUser = async (currentUser) => {
     dispatch({ type: UPDATE_USER_BEGIN });
     try {
-      const { data } = await authFetch.patch('http://localhost:5000/api/v1/auth/update-user', currentUser);
-      const { user, location, token } = data;
-
+      const { data } = await authFetch.patch('/auth/update-user', currentUser);
+      const { user, location } = data;
       dispatch({
         type: UPDATE_USER_SUCCESS,
         payload: { user, location, token },
       });
       addUserToLocalStorage({ user, location, token: initialState.token });
     } catch (error) {
+      console.log(error);
       if(error.response.status !== 401){
         dispatch({
           type: UPDATE_USER_ERROR,
           payload: { msg: error.response.data.msg },
         });
       }
+      
     }
     clearAlert();
   };
+
+  const handleChange = ({ name, value }) => {
+    dispatch({
+      type: HANDLE_CHANGE,
+      payload: { name, value },
+    })
+  };
+
 
   const addUserToLocalStorage = ({ user, token, location }) => {
     localStorage.setItem('user', JSON.stringify(user));
@@ -172,6 +189,7 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         logoutUser,
         updateUser,
+        handleChange
       }}
     >
       {children}
