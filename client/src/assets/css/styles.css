@@ -1,15 +1,15 @@
 .nav-link {
   transition: 0.5s ease-in-out all;
-  font-size: .92rem;
+  font-size: 0.92rem;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 8px 0;
-  opacity: .8;
+  opacity: 0.8;
   width: 100%;
   padding-left: 22%;
-  letter-spacing: .08rem;
+  letter-spacing: 0.08rem;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -27,7 +27,8 @@
   place-items: center;
   transition: 0.5s ease-in-out all;
 }
-.active, .activeLight {
+.active,
+.activeLight {
   padding-left: 32%;
   opacity: 1;
   border-right: 6px solid var(--chakra-colors-brand-secondary);
@@ -41,7 +42,8 @@
   background-color: var(--chakra-colors-brand-white);
 }
 
-.active .icon, .activeLight .icon {
+.active .icon,
+.activeLight .icon {
   color: var(--chakra-colors-brand-secondary);
 }
 
@@ -51,7 +53,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .nav-link{
+  .nav-link {
     width: 70%;
     padding-left: 18%;
   }
@@ -59,22 +61,24 @@
     padding-left: 20%;
     border-bottom: 1px solid var(--chakra-colors-brand-secondary);
   }
-  .active, .activeLight {
+  .active,
+  .activeLight {
     padding-left: 20%;
     border-right: none;
     border-bottom: 1px solid var(--chakra-colors-brand-secondary);
   }
   .active {
-    background-color:transparent
+    background-color: transparent;
   }
-  
+
   .activeLight {
     background-color: transparent;
   }
+
 }
 
 @media screen and (min-width: 650px) and (max-width: 1180px) {
-  .nav-link{
+  .nav-link {
     width: 40%;
     padding-left: 12%;
   }
@@ -82,15 +86,16 @@
     padding-left: 15%;
     border-bottom: 1px solid var(--chakra-colors-brand-secondary);
   }
-  .active, .activeLight {
+  .active,
+  .activeLight {
     padding-left: 15%;
     border-right: none;
     border-bottom: 1px solid var(--chakra-colors-brand-secondary);
   }
   .active {
-    background-color:transparent
+    background-color: transparent;
   }
-  
+
   .activeLight {
     background-color: transparent;
   }
@@ -98,3 +103,20 @@
 
 
 
+/* Custom Input Profile Image Style */
+.custom-file-input {
+  background-color: var(--chakra-colors-brand-accent);
+  color: white;
+  padding: .8rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: .9s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+.custom-file-input:hover{
+  background-color: var(--chakra-colors-brand-dark);
+  transition: .5s ease-in-out;
+}
+/* Custom Input Profile Image Style */
