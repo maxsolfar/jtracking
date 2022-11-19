@@ -41,7 +41,37 @@ const UserSchema = new Schema({
       trim: true,
       maxlength: 30,
       default: ""
-    }
+    },
+    position: {
+      type: String,
+      trim: true,
+      maxlength: 30,
+      default: ""
+    },
+    phone: {
+      type: String,
+      trim: true,
+      maxlength: 15,
+      default: ""
+    },
+    linkedin: {
+      type: String,
+      trim: true,
+      maxlength: 150,
+      default: "https://www.linkedin.com/in/"
+    },
+    github: {
+      type: String,
+      trim: true,
+      maxlength: 150,
+      default: "https://github.com/"
+    },
+    image: {
+      type: String,
+      trim: true,
+      default:
+        'https://res.cloudinary.com/dr93y7mmk/image/upload/v1667536496/JTrackingImages/evwb3gwtox6rmcfyrmxb.png',
+    },
 },{
   timestamps: true,
   versionKey: false
