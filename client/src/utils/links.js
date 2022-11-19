@@ -1,39 +1,39 @@
-import { AiOutlineAppstoreAdd, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi';
-import { FaTasks } from 'react-icons/fa';
+import { FaTasks, FaRegUserCircle } from 'react-icons/fa';
 import { BiStats } from 'react-icons/bi';
-
+import { MdDashboard } from 'react-icons/md';
 
 const links = [
   {
     id: 1,
     text: 'overview',
     path: '/dashboard/',
-    icon: <BiStats />,
+    icon: <MdDashboard />,
   },
-/*   {
-    id: 2,
-    text: 'stats',
-    path: '/dashboard/stats',
-    icon: <BiStats />,
-  }, */
   {
     id: 2,
-    text: 'all jobs',
+    text: 'jobs',
     path: '/dashboard/all-jobs',
     icon: <FaTasks />,
   },
-  {
+/*   {
     id: 3,
     text: 'add job',
     path: '/dashboard/add-job',
     icon: <AiOutlineAppstoreAdd />,
+  }, */
+  {
+    id: 3,
+    text: 'profile',
+    path: '/dashboard/profile',
+    icon: <FaRegUserCircle />,
   },
   {
     id: 4,
-    text: 'profile',
-    path: '/dashboard/profile',
-    icon: <AiOutlineUser />,
+    text: 'reports',
+    path: '/dashboard/reports',
+    icon: <BiStats />,
   },
   {
     id: 5,
