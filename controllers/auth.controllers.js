@@ -45,8 +45,8 @@ const authControllers = {
     res.status(StatusCodes.OK).json({user, token, location: user.location});
   },
   updateUser: async (req, res, next) => {
-    const {email, name, lastName, location } = req.body;
-    if(!email || !name || !lastName || !location){
+    const {email, name, lastName, location, image, position, phone, linkedin, github } = req.body;
+    if(!email || !name || !lastName || !location || !image){
       throw new BadRequestError("Please provide all values");
     }
     const user = await User.findOne({_id: req.user.userId});
@@ -54,6 +54,12 @@ const authControllers = {
     user.name = name;
     user.lastName = lastName;
     user.location = location;
+    //*
+    user.position = position;
+    user.phone = phone;
+    user.linkedin = linkedin;
+    user.github = github;
+    user.image = image;
 
     await user.save();
     const newToken = user.createJWT();
