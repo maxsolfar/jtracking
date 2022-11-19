@@ -22,10 +22,8 @@ const Overview = () => {
       gap={4}
     >
       <HStack w={'100%'} as={'section'} gap={4}>
-        {/*         <Image w={"300px"} src={vector} alt={"image vector heading"} /> */}
         <Image w={'170px'} src={vector} alt={'image vector heading'} />
         <VStack alignItems={'flex-start'}>
-          {/*           <Heading fontSize={'5xl'}>Track your Job Search</Heading> */}
           <Heading fontSize={'2xl'} mb={2}>
             <Highlight
               query={['Search.']}
@@ -46,8 +44,6 @@ const Overview = () => {
             ad minim veniam, quis nostrud exercitation.
           </Text>
         </VStack>
-
-        {/*         <Image w={"600px"} src={vector} alt={"image vector heading"} /> */}
       </HStack>
       <Flex
         w={'100%'}
