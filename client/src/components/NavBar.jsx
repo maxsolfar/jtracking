@@ -24,6 +24,7 @@ import { motion } from 'framer-motion';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { useEffect, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
+import Clock from './Clock';
 
 const NavBar = () => {
   const { user, logoutUser, toggleSidebar } = useAppContext();
@@ -73,7 +74,6 @@ const NavBar = () => {
               pointerEvents="none"
               children={<BsSearch color="brand.clear" opacity={0.5} />}
             />
-            {/* <InputLeftAddon color={"brand.clear"}  children={<BsSearch />} bg={"brand.secondary"} /> */}
             <Input focusBorderColor='brand.secondary' type="tel" placeholder="Search here..." bg={colorMode==="dark" ? "brand.primary": "brand.clear"} />
           </InputGroup>
         </HStack>
@@ -81,27 +81,34 @@ const NavBar = () => {
         <Box display={['flex', 'flex', 'flex', 'none']} ml={[4, 4, 4, 0]}>
           <Logo />
         </Box>
+        
 
         <Flex alignItems={'center'} gap={4}>
+          <Box display={["none","none","flex","flex"]}>
+            <Clock/>
+          </Box>
           <Menu isLazy>
             <MenuButton>
               <Avatar
                 size="md"
                 rounded="full"
-                src={'https://i.imgur.com/uhQVGnD.png'}
+                borderColor={"brand.secondary"}
+                borderWidth={"2px"}
+                src={user.image}
+                shadow={"md"}
               />
             </MenuButton>
             <MenuList zIndex={5}>
               <Link
-                href="https://dev.to/m_ahmad"
+                href="https://www.linkedin.com/in/maxsolfar/"
                 _hover={{ textDecoration: 'none' }}
                 isExternal
               >
                 <MenuItem>
                   <VStack justify="start" alignItems="left">
-                    <Text fontWeight="500">{user?.name}</Text>
+                    <Text fontWeight="500">{user?.name} {user?.lastName}</Text>
                     <Text size="sm" color="gray.500" mt="0 !important">
-                      @{user?.name}
+                      @{user?.name.toLowerCase()}{user?._id.slice(0,3)}
                     </Text>
                   </VStack>
                 </MenuItem>

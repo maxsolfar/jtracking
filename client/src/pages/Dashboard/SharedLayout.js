@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-/* import Wrapper from '../../assets/wrappers/SharedLayout'; */
 import { NavBar, MobileSidebar, DesktopSidebar } from '../../components';
 import { SimpleGrid, Box, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
@@ -36,7 +35,6 @@ const SharedLayout = () => {
                   width: showSidebar ? '88vw' : '90vw',
                 }
           }
-/*           border={'1px solid #fff'} */
         >
           <Outlet />
         </Box>
