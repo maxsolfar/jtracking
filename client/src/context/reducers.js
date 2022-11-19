@@ -12,6 +12,7 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  HANDLE_CHANGE,
 } from './actions';
 import { initialState } from './appContext';
 
@@ -123,6 +124,12 @@ export const mainReducer = (state, action) => {
       token: null,
       userLocation: '',
       jobLocation: '',
+    };
+  }
+  if (action.type === HANDLE_CHANGE) {
+    return {
+      ...state,
+      [action.payload.name] : action.payload.value,
     };
   }
   throw new Error(`no such action: ${action.type}`);
