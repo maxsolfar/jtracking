@@ -12,7 +12,7 @@ const theme = extendTheme({
     brand: {
       primary: '#2D3250',
       secondary: '#3F62FE',
-      accent: '#FF4B96',
+      accent: '#A44CC4',
       white: '#ffffff',
       clear: '#eef1ff',
       dark: '#1A202C',
@@ -25,6 +25,13 @@ const theme = extendTheme({
       300: '#3459FE',
       500: '#3F62FE',
       600: '#3459FE',
+    },
+    mainPurple: {
+      50: '#E0C2EB',
+      200: '#C894DB',
+      300: '#B975D1',
+      500: '#A44CC4',
+      600: '#A147C2',
     },
   },
   styles: {
