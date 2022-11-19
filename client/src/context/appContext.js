@@ -16,6 +16,7 @@ import {
   UPDATE_USER_ERROR,
   UPDATE_USER_BEGIN,
   HANDLE_CHANGE,
+  CLEAR_VALUES,
 } from './actions';
 
 //checking if user exist in localStorage
@@ -165,6 +166,11 @@ const AppProvider = ({ children }) => {
     })
   };
 
+  const clearValues = () => {
+    dispatch({
+      type: CLEAR_VALUES,
+    })
+  };
 
   const addUserToLocalStorage = ({ user, token, location }) => {
     localStorage.setItem('user', JSON.stringify(user));
@@ -189,7 +195,8 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         logoutUser,
         updateUser,
-        handleChange
+        handleChange,
+        clearValues
       }}
     >
       {children}
