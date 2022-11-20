@@ -1,7 +1,7 @@
+import { Textarea } from '@chakra-ui/react';
 import React from 'react';
 import { FormRow, Alert, FormRowSelect } from '../../components';
 import { useAppContext } from '../../context/appContext';
-
 
 const AllJobs = () => {
   const {
@@ -10,22 +10,29 @@ const AllJobs = () => {
     displayAlert,
     position,
     company,
+    description,
+    postUrl,
     jobLocation,
     jobType,
     jobTypeOptions,
     status,
     statusOptions,
-    handleChange
+    handleChange,
+    clearValues,
+    createJob
   } = useAppContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!position || !company || !jobLocation) {
+    /* if (!position || !company || !jobLocation) {
       displayAlert();
       return;
+    } */
+    if(isEditing) {
+      return;
     }
-    console.log('create job');
+    createJob();
   };
 
   const handleJobInput = (e) => {
@@ -53,6 +60,27 @@ const AllJobs = () => {
             type="text"
             name="company"
             value={company}
+            handleChange={handleJobInput}
+          />
+          {/* description */}
+          <FormRow
+            type="text"
+            labelText="description"
+            name="description"
+            value={description}
+            handleChange={handleJobInput}
+          />
+          <Textarea
+            name="description"
+            value={description}
+            handleChange={handleJobInput}
+          />
+          {/* postUrl */}
+          <FormRow
+            type="text"
+            labelText="Post URL"
+            name="postUrl"
+            value={postUrl}
             handleChange={handleJobInput}
           />
           {/* location */}
@@ -88,6 +116,14 @@ const AllJobs = () => {
               onClick={handleSubmit}
             >
               submit
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                clearValues();
+              }}
+            >
+              clear
             </button>
           </div>
         </div>
