@@ -15,6 +15,11 @@ const JobSchema = new Schema(
       required: [true, 'Please provide position'],
       maxlength: 120,
     },
+    description: {
+      type: String,
+      trim: true,
+      maxlength: 700,
+    },
     status: {
       type: String,
       trim: true,
@@ -33,11 +38,17 @@ const JobSchema = new Schema(
       default: 'My city',
       required: true,
     },
+    postUrl: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: [true, 'Please provide user'],
     },
+    
   },
   {
     timestamps: true,
