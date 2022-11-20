@@ -17,6 +17,9 @@ import {
   UPDATE_USER_BEGIN,
   HANDLE_CHANGE,
   CLEAR_VALUES,
+  CREATE_JOB_BEGIN,
+  CREATE_JOB_SUCCESS,
+  CREATE_JOB_ERROR,
 } from './actions';
 
 //checking if user exist in localStorage
@@ -37,6 +40,8 @@ export const initialState = {
   editJobId: '',
   position: '',
   company: '',
+  description: '',
+  postUrl: '',
   jobLocation: userLocation || '',
   jobTypeOptions: ['Full-time', 'Part-time', 'Remote', 'Internship', 'Hybrid'],
   jobType: 'Full-time',
@@ -148,13 +153,12 @@ const AppProvider = ({ children }) => {
       addUserToLocalStorage({ user, location, token: initialState.token });
     } catch (error) {
       console.log(error);
-      if(error.response.status !== 401){
+      if (error.response.status !== 401) {
         dispatch({
           type: UPDATE_USER_ERROR,
           payload: { msg: error.response.data.msg },
         });
       }
-      
     }
     clearAlert();
   };
@@ -163,13 +167,45 @@ const AppProvider = ({ children }) => {
     dispatch({
       type: HANDLE_CHANGE,
       payload: { name, value },
-    })
+    });
   };
 
   const clearValues = () => {
     dispatch({
       type: CLEAR_VALUES,
-    })
+    });
+  };
+
+  const createJob = async () => {
+    dispatch({ type: CREATE_JOB_BEGIN });
+    try {
+      const {
+        position,
+        company,
+        description,
+        postUrl,
+        jobLocation,
+        jobType,
+        status,
+      } = state;
+      await authFetch.post('/jobs', {
+        position,
+        company,
+        description,
+        postUrl,
+        jobLocation,
+        jobType,
+        status,
+      });
+      dispatch({ type: CREATE_JOB_SUCCESS });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: CREATE_JOB_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
   };
 
   const addUserToLocalStorage = ({ user, token, location }) => {
@@ -196,7 +232,8 @@ const AppProvider = ({ children }) => {
         logoutUser,
         updateUser,
         handleChange,
-        clearValues
+        clearValues,
+        createJob
       }}
     >
       {children}
