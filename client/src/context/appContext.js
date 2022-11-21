@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { mainReducer } from './reducers';
 import {
@@ -20,6 +20,8 @@ import {
   CREATE_JOB_BEGIN,
   CREATE_JOB_SUCCESS,
   CREATE_JOB_ERROR,
+  GET_JOBS_BEGIN,
+  GET_JOBS_SUCCESS,
 } from './actions';
 
 //checking if user exist in localStorage
@@ -47,10 +49,19 @@ export const initialState = {
   jobType: 'Full-time',
   statusOptions: ['Pending', 'Interview', 'Declined'],
   status: 'Pending',
+  jobs: [],
+  totalJobs: 0,
+  numOfPages: 1,
+  page:1
 };
 
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
+
+  useEffect(() => {
+    getJobs();
+  }, [])
+
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const authFetch = axios.create({
     baseURL: 'http://localhost:5000/api/v1',
@@ -208,6 +219,27 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const getJobs = async () => {
+    let url = '/jobs';
+    dispatch({ type: GET_JOBS_BEGIN });
+    try {
+      const { data } = await authFetch(url);
+      const { jobs, totalJobs, numOfPages } = data;
+      dispatch({
+        type: GET_JOBS_SUCCESS,
+        payload: {
+          jobs,
+          totalJobs,
+          numOfPages,
+        },
+      });
+    } catch (error) {
+      console.log(error.response);
+      logoutUser();
+    }
+    clearAlert();
+  }
+
   const addUserToLocalStorage = ({ user, token, location }) => {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
@@ -233,7 +265,8 @@ const AppProvider = ({ children }) => {
         updateUser,
         handleChange,
         clearValues,
-        createJob
+        createJob,
+        getJobs
       }}
     >
       {children}
