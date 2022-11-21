@@ -4,7 +4,8 @@ import { BadRequestError, NotFoundError } from "../errors/index.js";
 
 const jobsControllers = {
   getAllJobs: async (req, res, next) => {
-    res.send("All Jobs");
+    const jobs = await Job.find({ createdBy: req.user.userId });
+    res.status(StatusCodes.OK).json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
   },
   createJob: async (req, res, next) => {
     const { position, company } = req.body;
