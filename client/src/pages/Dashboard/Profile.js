@@ -48,25 +48,6 @@ const Profile = () => {
       alignItems={['center', 'center', 'center', 'center']}
       gap={8}
     >
-      {/* <VStack flexBasis={[0, 0, '220px', '220px']}>
-        <InputImage img={image} onCLick={setImage} />
-        <Text
-          pt={4}
-          fontSize={'md'}
-          fontWeight={'semibold'}
-          textAlign={'center'}
-        >
-          {name} {lastName}
-        </Text>
-        <Text
-          fontWeight={'bold'}
-          fontSize={'lg'}
-          textTransform={'capitalize'}
-          color={'brand.secondary'}
-        >
-          {location}
-        </Text>
-      </VStack> */}
       <Flex
         w={'100%'}
         direction={'column'}
@@ -145,39 +126,6 @@ const Profile = () => {
             </SimpleGrid>
           </Stack>
           <SimpleGrid columns={2} columnGap={3} rowGap={6}>
-            {/* <GridItem colSpan={[2, 2, 2, 1]}>
-              <FormRow
-                type="text"
-                name="First Name"
-                value={name}
-                handleChange={(e) => setName(e.target.value)}
-              />
-            </GridItem>
-            <GridItem colSpan={[2, 2, 2, 1]}>
-              <FormRow
-                labelText="Last Name"
-                type="text"
-                name="Last Name"
-                value={lastName}
-                handleChange={(e) => setLastName(e.target.value)}
-              />
-            </GridItem>
-            <GridItem colSpan={[2, 2, 2, 1]}>
-              <FormRow
-                type="email"
-                name="Email"
-                value={email}
-                handleChange={(e) => setEmail(e.target.value)}
-              />
-            </GridItem>
-            <GridItem colSpan={[2, 2, 2, 1]}>
-              <FormRow
-                type="text"
-                name="Current Location"
-                value={location}
-                handleChange={(e) => setLocation(e.target.value)}
-              />
-            </GridItem> */}
             <GridItem colSpan={2}>
               <Heading
                 fontSize={'md'}
@@ -220,7 +168,6 @@ const Profile = () => {
             <GridItem colSpan={2} justifyItems={"center"}>
               <Button
                 variant={'solid'}
-                className="btn btn-block"
                 type="submit"
                 disabled={isLoading}
                 colorScheme={'mainBlue'}
