@@ -24,11 +24,11 @@ const NavLinks = ({ toggleSidebar }) => {
             alignItems={'center'}
             textTransform={'capitalize'}
             justifyContent={'center'}
-            _hover={
+/*             _hover={
               colorMode === 'dark'
                 ? { background: 'brand.dark' }
                 : { background: 'brand.white' }
-            }
+            } */
             w={'100%'}
           >
             <NavLink

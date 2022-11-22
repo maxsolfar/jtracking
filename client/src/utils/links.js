@@ -32,7 +32,7 @@ const links = [
   {
     id: 4,
     text: 'reports',
-    path: '/dashboard/reports',
+    path: '/dashboard/add-job',
     icon: <BiStats />,
   },
   {

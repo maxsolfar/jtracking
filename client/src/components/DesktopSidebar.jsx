@@ -55,9 +55,9 @@ const BigSideBar = () => {
           height={"100%"}
           display={"flex"}
           flexDirection={"column"}
-          justifyContent={"space-between"}
+          justifyContent={"space-between"}  
           py={8}
-          shadow={"md"}
+/*           shadow={"md"} */
         >
           <Flex
             as={'header'}

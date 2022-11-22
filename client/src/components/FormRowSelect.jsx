@@ -1,15 +1,26 @@
-const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
-  return (
-    <div className="form-row">
-      <label htmlFor={name} className="form-label">
-        {labelText || name}
-      </label>
+import { Select, FormLabel, FormControl, useColorMode } from "@chakra-ui/react";
 
-      <select
+const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
+  const { colorMode } = useColorMode();
+  return (
+    <FormControl>
+      <FormLabel htmlFor={name}>
+        {labelText || name}
+      </FormLabel>
+
+      <Select
         name={name}
         value={value}
         onChange={handleChange}
-        className="form-select"
+        variant='outline'
+        colorScheme={"mainBlue"}
+        focusBorderColor="brand.secondary"
+        border={'1px'}
+        borderColor={
+          colorMode === 'dark'
+            ? 'rgb(238, 241, 255, .1)'
+            : 'rgb(26, 32, 44, .15)'
+        }
       >
         {list.map((itemValue, index) => {
           return (
@@ -18,8 +29,8 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
             </option>
           );
         })}
-      </select>
-    </div>
+      </Select>
+    </FormControl>
   );
 };
 

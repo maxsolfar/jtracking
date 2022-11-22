@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+
 export const ColorModeSwitcher = (props) => {
   const { toggleColorMode, colorMode } = useColorMode();
   const text = useColorModeValue('dark', 'light');

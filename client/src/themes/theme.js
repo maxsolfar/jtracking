@@ -27,8 +27,8 @@ const theme = extendTheme({
       600: '#3459FE',
     },
     mainPurple: {
-      50: '#E0C2EB',
-      200: '#C894DB',
+      50: '#a373b5',
+      200: '#A44CC4',
       300: '#B975D1',
       500: '#A44CC4',
       600: '#A147C2',
