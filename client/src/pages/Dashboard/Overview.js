@@ -21,7 +21,7 @@ const Overview = () => {
       justifyContent={'center'}
       gap={4}
     >
-      <HStack w={'100%'} as={'section'} gap={4}>
+      {/* <HStack w={'100%'} as={'section'} gap={4}>
         <Image w={'170px'} src={vector} alt={'image vector heading'} />
         <VStack alignItems={'flex-start'}>
           <Heading fontSize={'2xl'} mb={2}>
@@ -44,7 +44,7 @@ const Overview = () => {
             ad minim veniam, quis nostrud exercitation.
           </Text>
         </VStack>
-      </HStack>
+      </HStack> */}
       <Flex
         w={'100%'}
         h={'100px'}

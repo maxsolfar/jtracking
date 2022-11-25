@@ -8,7 +8,6 @@ import {
   useColorMode,
   SimpleGrid,
   GridItem,
-  HStack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { FormRow, Alert } from '../../components';
@@ -174,6 +173,7 @@ const Profile = () => {
                 color={'brand.clear'}
                 fontWeight={'medium'}
                 fontSize={'md'}
+                px={6}
               >
                 {isLoading ? 'Please Wait...' : 'Save Changes'}
               </Button>

@@ -1,6 +1,5 @@
-import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi';
-import { FaTasks, FaRegUserCircle } from 'react-icons/fa';
+import { FaTasks, FaUserEdit } from 'react-icons/fa';
 import { BiStats } from 'react-icons/bi';
 import { MdDashboard } from 'react-icons/md';
 
@@ -27,7 +26,7 @@ const links = [
     id: 3,
     text: 'profile',
     path: '/dashboard/profile',
-    icon: <FaRegUserCircle />,
+    icon: <FaUserEdit />,
   },
   {
     id: 4,

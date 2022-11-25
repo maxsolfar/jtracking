@@ -17,7 +17,7 @@ const AddJob = () => {
   const {
     isEditing,
     showAlert,
-    displayAlert,
+    //displayAlert,
     position,
     company,
     description,
@@ -151,6 +151,7 @@ const AddJob = () => {
                   fontWeight={'medium'}
                   fontSize={'md'}
                   onClick={handleSubmit}
+                  px={6}
                 >
                   Submit
                 </Button>
@@ -160,6 +161,7 @@ const AddJob = () => {
                   color={'brand.clear'}
                   fontWeight={'medium'}
                   fontSize={'md'}
+                  px={6}
                   onClick={(e) => {
                     e.preventDefault();
                     clearValues();

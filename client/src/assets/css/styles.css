@@ -33,7 +33,55 @@
   opacity: 1;
   border-radius: 50px 0 0 50px;
   margin-left: 15px;
+  position: relative; 
 /*   border-right: 6px solid var(--chakra-colors-brand-secondary); */
+}
+.active::before,.activeLight::before  {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: -50px;
+  right: 0;
+  height: 50px;
+  width: 25px;
+  border-top-right-radius: 15px;
+}
+.active::before{
+  box-shadow: 0 -20px 0 0 var(--chakra-colors-brand-dark);
+  animation: opacity .5s ease-in;
+}
+.activeLight::before{
+  box-shadow: 0 -20px 0 0 var(--chakra-colors-brand-white);
+  animation: opacity .5s ease-in;
+}
+
+.active::after,.activeLight::after  {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: -50px;
+  right: 0;
+  height: 50px;
+  width: 25px;
+  border-bottom-right-radius: 15px;
+}
+
+.active::after{
+  box-shadow: 0 20px 0 0  var(--chakra-colors-brand-dark);
+  animation: opacity .5s ease-in;
+}
+.activeLight::after{
+  box-shadow: 0 20px 0 0 var(--chakra-colors-brand-white);
+  animation: opacity .5s ease-in;
+}
+
+@keyframes opacity {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 
 .active {
@@ -67,6 +115,7 @@
   .activeLight {
     padding-left: 20%;
     border-right: none;
+    border-radius: 0px;
     border-bottom: 1px solid var(--chakra-colors-brand-secondary);
   }
   .active {
