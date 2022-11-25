@@ -19,6 +19,7 @@ import {
   Input,
   HStack,
   useColorMode,
+  Heading,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
@@ -69,46 +70,68 @@ const NavBar = () => {
           >
             <FaAlignLeft />
           </Button>
-          <InputGroup w={'sm'} display={['none', 'none', 'none', 'flex']} >
+          {/*  <InputGroup w={'sm'} display={['none', 'none', 'none', 'flex']} >
             <InputLeftElement
               pointerEvents="none"
               children={<BsSearch color="brand.clear" opacity={0.5} />}
             />
             <Input focusBorderColor='brand.secondary' type="tel" placeholder="Search here..." bg={colorMode==="dark" ? "brand.primary": "brand.clear"} />
-          </InputGroup>
+          </InputGroup> */}
+          <Heading
+            display={['none', 'none', 'flex', 'flex']}
+            pl={3}
+            fontSize={'lg'}
+            lineHeight={'1rem'}
+            gap={2}
+            alignItems={'center'}
+          >
+            Welcome to
+            <Heading
+              color="brand.clear"
+              bg={'brand.secondary'}
+              py={1}
+              px={3}
+              borderRadius={6}
+              fontSize={'xl'}
+            >
+              Tracking Board
+            </Heading>
+          </Heading>
         </HStack>
 
         <Box display={['flex', 'flex', 'flex', 'none']} ml={[4, 4, 4, 0]}>
           <Logo />
         </Box>
-        
 
         <Flex alignItems={'center'} gap={4}>
-          <Box display={["none","none","flex","flex"]}>
-            <Clock/>
+          <Box display={['none', 'none', 'flex', 'flex']}>
+            <Clock />
           </Box>
           <Menu isLazy>
             <MenuButton>
               <Avatar
                 size="md"
                 rounded="full"
-                borderColor={"brand.secondary"}
-                borderWidth={"2px"}
+                borderColor={'brand.secondary'}
+                borderWidth={'2px'}
                 src={user.image}
-                shadow={"md"}
+                shadow={'md'}
               />
             </MenuButton>
             <MenuList zIndex={5}>
               <Link
-                href="https://www.linkedin.com/in/maxsolfar/"
+                href={user.linkedin}
                 _hover={{ textDecoration: 'none' }}
                 isExternal
               >
                 <MenuItem>
                   <VStack justify="start" alignItems="left">
-                    <Text fontWeight="500">{user?.name} {user?.lastName}</Text>
+                    <Text fontWeight="500">
+                      {user?.name} {user?.lastName}
+                    </Text>
                     <Text size="sm" color="gray.500" mt="0 !important">
-                      @{user?.name.toLowerCase()}{user?._id.slice(0,3)}
+                      @{user?.name.toLowerCase()}
+                      {user?._id.slice(0, 3)}
                     </Text>
                   </VStack>
                 </MenuItem>
