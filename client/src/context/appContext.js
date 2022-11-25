@@ -238,7 +238,14 @@ const AppProvider = ({ children }) => {
       logoutUser();
     }
     clearAlert();
-  }
+  };
+
+  const setEditJob = (id) => {
+    console.log(`set edit job : ${id}`)
+  };
+  const deleteJob = (id) =>{
+    console.log(`delete : ${id}`)
+  };
 
   const addUserToLocalStorage = ({ user, token, location }) => {
     localStorage.setItem('user', JSON.stringify(user));
@@ -266,7 +273,9 @@ const AppProvider = ({ children }) => {
         handleChange,
         clearValues,
         createJob,
-        getJobs
+        getJobs,
+        setEditJob,
+        deleteJob
       }}
     >
       {children}
