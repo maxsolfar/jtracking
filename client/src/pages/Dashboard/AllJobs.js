@@ -8,10 +8,11 @@ import {
   InputGroup,
   InputLeftElement,
 } from '@chakra-ui/react';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
-import { JobsContainer, SearchContainer } from '../../components'
+import { JobsContainer, SearchContainer } from '../../components';
 import { BsSearch } from 'react-icons/bs';
-import { BsPlusLg } from "react-icons/bs";
+import { BsPlusLg } from 'react-icons/bs';
 
 const AllJobs = () => {
   const { colorMode } = useColorMode();
@@ -44,18 +45,22 @@ const AllJobs = () => {
               bg={colorMode === 'dark' ? 'brand.primary' : 'brand.clear'}
             />
           </InputGroup>
-          <Button
-            variant={'solid'}
-            type="submit"
-            colorScheme={'mainBlue'}
-            color={'brand.clear'}
-            fontWeight={'medium'}
-            fontSize={'md'}
-            px={8}
-            leftIcon={<BsPlusLg />}
+          <NavLink
+            to={'/dashboard/add-job'}
           >
-            Add Job
-          </Button>
+            <Button
+              variant={'solid'}
+              type="submit"
+              colorScheme={'mainBlue'}
+              color={'brand.clear'}
+              fontWeight={'medium'}
+              fontSize={'md'}
+              px={8}
+              leftIcon={<BsPlusLg />}
+            >
+              Add Job
+            </Button>
+          </NavLink>
         </Stack>
       </Flex>
       <Flex
