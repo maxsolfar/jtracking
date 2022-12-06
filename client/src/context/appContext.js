@@ -29,6 +29,7 @@ import {
   EDIT_JOB_ERROR,
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
+  CLEAR_FILTERS,
 } from './actions';
 
 //checking if user exist in localStorage
@@ -70,10 +71,10 @@ export const initialState = {
   stats: {},
   monthlyApplications: [],
   search: '',
-  searchStatus: 'all',
-  searchType: 'all',
-  sort: 'latest',
-  sortOptions: ['latest', 'oldest', 'a-z', 'z-a'],
+  searchStatus: 'All',
+  searchType: 'All',
+  sort: 'Latest',
+  sortOptions: ['Latest', 'Oldest', 'A-Z', 'Z-A'],
 };
 
 const AppContext = React.createContext();
@@ -317,7 +318,7 @@ const AppProvider = ({ children }) => {
   };
 
   const clearFilters = () => {
-    console.log('clear filters');
+    dispatch({ type: CLEAR_FILTERS });
   };
 
   const addUserToLocalStorage = ({ user, token, location }) => {
