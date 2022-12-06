@@ -146,6 +146,7 @@ export const mainReducer = (state, action) => {
     };
   }
   if (action.type === CLEAR_VALUES) {
+    console.log("entre");
     const initialState = {
       isEditing: false,
       editJobId: '',
