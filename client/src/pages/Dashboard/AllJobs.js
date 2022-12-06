@@ -45,9 +45,7 @@ const AllJobs = () => {
               bg={colorMode === 'dark' ? 'brand.primary' : 'brand.clear'}
             />
           </InputGroup>
-          <NavLink
-            to={'/dashboard/add-job'}
-          >
+          <NavLink to={'/dashboard/add-job'}>
             <Button
               variant={'solid'}
               type="submit"
@@ -72,6 +70,10 @@ const AllJobs = () => {
         bg={colorMode === 'dark' ? 'brand.primary' : 'brand.clear'}
       >
         <SearchContainer />
+      </Flex>
+      <Flex
+        w={'100%'}
+      >
         <JobsContainer />
       </Flex>
     </Flex>

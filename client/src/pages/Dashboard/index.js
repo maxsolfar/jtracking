@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import SharedLayout from "./SharedLayout";
 import Overview from "./Overview";
 import Settings from "./Settings";
+import Stats from "./Stats.js";
 
 export{
   AddJob,
@@ -11,5 +12,6 @@ export{
   Profile,
   SharedLayout,
   Overview,
-  Settings
+  Settings,
+  Stats
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppContext } from '../context/appContext';
 import Loading from './Loading';
 import Job from './Job';
-import { Flex, Heading, Box } from '@chakra-ui/react';
+import { Flex, Heading, SimpleGrid } from '@chakra-ui/react';
 
 const JobsContainer = () => {
   const { getJobs, jobs, isLoading, page, totalJobs } = useAppContext();
@@ -21,15 +21,15 @@ const JobsContainer = () => {
     );
   }
   return (
-    <Flex>
+    <Flex direction={"column"} w={'full'}>
       <Heading>
         {totalJobs} job{jobs.length > 1 && 's'} found
       </Heading>
-      <Box>
+      <SimpleGrid columns={3} columnGap={3} rowGap={6} w={'full'}>
         {jobs.map((job) => {
           return <Job key={job._id} {...job} />
         })}
-      </Box>
+      </SimpleGrid>
     </Flex>
   );
 };

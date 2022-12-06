@@ -4,7 +4,7 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
   const { colorMode } = useColorMode();
   return (
     <FormControl>
-      <FormLabel htmlFor={name}>
+      <FormLabel htmlFor={name} fontSize={'sm'} mb={1} opacity={0.9}>
         {labelText || name}
       </FormLabel>
 

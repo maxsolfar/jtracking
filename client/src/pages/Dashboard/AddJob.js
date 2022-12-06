@@ -17,7 +17,7 @@ const AddJob = () => {
   const {
     isEditing,
     showAlert,
-    //displayAlert,
+    displayAlert,
     position,
     company,
     description,
@@ -25,24 +25,28 @@ const AddJob = () => {
     jobLocation,
     jobType,
     jobTypeOptions,
+    positionOptions,
     status,
     statusOptions,
     handleChange,
     clearValues,
     createJob,
+    editJob
   } = useAppContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /* if (!position || !company || !jobLocation) {
+    if (!position || !company || !jobLocation) {
       displayAlert();
       return;
-    } */
+    }
     if (isEditing) {
+      editJob();
       return;
     }
     createJob();
+    clearValues();
   };
 
   const handleJobInput = (e) => {
@@ -77,18 +81,27 @@ const AddJob = () => {
               </Heading>
             </GridItem>
             <GridItem colSpan={[2, 2, 2, 1]}>
-              <FormRow
+{/*               <FormRow
+                labelText="Position"
                 type="text"
-                name="Position"
+                name="position"
                 value={position}
                 handleChange={handleJobInput}
+              /> */}
+              <FormRowSelect
+                labelText="Position"
+                name="position"
+                value={position}
+                handleChange={handleJobInput}
+                list={positionOptions}
               />
             </GridItem>
             {/* company */}
             <GridItem colSpan={[2, 2, 2, 1]}>
               <FormRow
+                labelText="Company"
                 type="text"
-                name="Company"
+                name="company"
                 value={company}
                 handleChange={handleJobInput}
               />
@@ -125,7 +138,8 @@ const AddJob = () => {
             {/* job status */}
             <GridItem colSpan={[2, 2, 2, 1]}>
               <FormRowSelect
-                name="Status"
+                labelText="Status"
+                name="status"
                 value={status}
                 handleChange={handleJobInput}
                 list={statusOptions}

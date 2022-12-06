@@ -1,6 +1,13 @@
 import React from 'react';
 import moment from 'moment';
-import { Button, Flex, Heading, HStack, Box } from '@chakra-ui/react';
+import {
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Box,
+  useColorMode,
+} from '@chakra-ui/react';
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../context/appContext';
@@ -17,13 +24,18 @@ const Job = ({
   createdAt,
   status,
 }) => {
+  const { colorMode } = useColorMode();
   const { setEditJob, deleteJob } = useAppContext();
   let date = moment(createdAt);
   date = date.format('MMM Do, YYYY');
   return (
-    <Flex>
-      <Heading>{company}</Heading>
-      <Heading>{date}</Heading>
+    <Flex
+      bg={colorMode === 'dark' ? 'brand.primary' : 'brand.clear'}
+      direction={'column'}
+      p={4}
+    >
+      <Heading fontSize={'lg'}>{company}</Heading>
+      <Heading fontSize={'md'}>{date}</Heading>
       <Box>
         <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
         <JobInfo icon={<FaCalendarAlt />} text={date} />

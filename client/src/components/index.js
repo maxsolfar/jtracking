@@ -9,6 +9,9 @@ import FormTextArea from './FormTextArea';
 import SearchContainer from './SearchContainer';
 import JobsContainer from './JobsContainer';
 import Loading from './Loading';
+import StatsContainer from './StatsContainer';
+import ChartsContainer from './ChartsContainer';
+import StatsItem from './StatsItem';
 
 export {
   Logo,
@@ -21,5 +24,8 @@ export {
   FormTextArea,
   SearchContainer,
   JobsContainer,
-  Loading
+  Loading,
+  StatsContainer,
+  ChartsContainer,
+  StatsItem
 };
