@@ -55,6 +55,13 @@ export const initialState = {
   jobTypeOptions: ['Full-time', 'Part-time', 'Remote', 'Internship', 'Hybrid'],
   jobType: 'Full-time',
   statusOptions: ['Pending', 'Interview', 'Declined'],
+  positionOptions: [
+    'Front End Developer',
+    'Back End Developer',
+    'Full Stack Developer',
+    'Software Engineer',
+    'DevOps Engineer',
+  ],
   status: 'Pending',
   jobs: [],
   totalJobs: 0,
@@ -62,6 +69,11 @@ export const initialState = {
   page: 1,
   stats: {},
   monthlyApplications: [],
+  search: '',
+  searchStatus: 'all',
+  searchType: 'all',
+  sort: 'latest',
+  sortOptions: ['latest', 'oldest', 'a-z', 'z-a'],
 };
 
 const AppContext = React.createContext();
@@ -190,6 +202,7 @@ const AppProvider = ({ children }) => {
   };
 
   const clearValues = () => {
+    console.log('entre 222');
     dispatch({
       type: CLEAR_VALUES,
     });
@@ -303,6 +316,10 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const clearFilters = () => {
+    console.log('clear filters');
+  };
+
   const addUserToLocalStorage = ({ user, token, location }) => {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
@@ -333,7 +350,8 @@ const AppProvider = ({ children }) => {
         setEditJob,
         editJob,
         deleteJob,
-        showStats
+        showStats,
+        clearFilters,
       }}
     >
       {children}
