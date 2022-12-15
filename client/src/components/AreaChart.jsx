@@ -11,7 +11,7 @@ import {
 
 const AreaChartComponent = ({data}) => {
   return (
-    <ResponsiveContainer width='100%' height={300}>
+    <ResponsiveContainer width='100%' height={270}>
       <AreaChart
         data={data}
         margin={{
@@ -22,7 +22,7 @@ const AreaChartComponent = ({data}) => {
         <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
-        <Area type="monotone" dataKey="count" stroke="#2cb1bc" fill="#bef8fd" />
+        <Area type="monotone" dataKey="count" stroke="#2ABEB3" fill="#56f0e5" />
       </AreaChart>
     </ResponsiveContainer>
   );
