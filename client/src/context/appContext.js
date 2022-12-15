@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useEffect } from 'react';
+import React, { useReducer, useContext } from 'react';
 import axios from 'axios';
 import { mainReducer } from './reducers';
 import {
@@ -30,6 +30,7 @@ import {
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
+  CHANGE_PAGE,
 } from './actions';
 
 //checking if user exist in localStorage
@@ -70,19 +71,16 @@ export const initialState = {
   page: 1,
   stats: {},
   monthlyApplications: [],
+  lastApplications: [],
   search: '',
   searchStatus: 'All',
   searchType: 'All',
-  sort: 'Latest',
-  sortOptions: ['Latest', 'Oldest', 'A-Z', 'Z-A'],
+  sort: 'Lastest',
+  sortOptions: ['Lastest', 'Oldest', 'A-Z', 'Z-A'],
 };
 
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
-  useEffect(() => {
-    getJobs();
-  }, []);
-
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const authFetch = axios.create({
     baseURL: 'http://localhost:5000/api/v1',
@@ -242,11 +240,18 @@ const AppProvider = ({ children }) => {
   };
 
   const getJobs = async () => {
-    let url = '/jobs';
+    const { page, search, searchStatus, searchType, sort } = state;
+    console.log("d", sort);
+    let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+    console.log(url);
+    if (search) {
+      url = url + `&search=${search}`;
+    }
     dispatch({ type: GET_JOBS_BEGIN });
     try {
       const { data } = await authFetch(url);
       const { jobs, totalJobs, numOfPages } = data;
+      console.log(jobs);
       dispatch({
         type: GET_JOBS_SUCCESS,
         payload: {
@@ -268,7 +273,7 @@ const AppProvider = ({ children }) => {
   const editJob = async () => {
     dispatch({ type: EDIT_JOB_BEGIN });
     try {
-      const { position, company, jobLocation, jobType, status } = state;
+      const { position, company, description, postUrl, jobLocation, jobType, status } = state;
 
       await authFetch.patch(`/jobs/${state.editJobId}`, {
         company,
@@ -276,6 +281,8 @@ const AppProvider = ({ children }) => {
         jobLocation,
         jobType,
         status,
+        description,
+        postUrl
       });
       dispatch({
         type: EDIT_JOB_SUCCESS,
@@ -308,6 +315,7 @@ const AppProvider = ({ children }) => {
         payload: {
           stats: data.defaultStats,
           monthlyApplications: data.monthlyApplications,
+          lastApplications: data.lastApplications
         },
       });
     } catch (error) {
@@ -319,6 +327,10 @@ const AppProvider = ({ children }) => {
 
   const clearFilters = () => {
     dispatch({ type: CLEAR_FILTERS });
+  };
+
+  const changePage = (page) => {
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
   };
 
   const addUserToLocalStorage = ({ user, token, location }) => {
@@ -353,6 +365,7 @@ const AppProvider = ({ children }) => {
         deleteJob,
         showStats,
         clearFilters,
+        changePage,
       }}
     >
       {children}

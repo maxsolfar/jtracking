@@ -27,6 +27,7 @@ import {
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
+  CHANGE_PAGE,
 } from './actions';
 import { initialState } from './appContext';
 
@@ -147,7 +148,7 @@ export const mainReducer = (state, action) => {
     };
   }
   if (action.type === CLEAR_VALUES) {
-    console.log("entre");
+    console.log('entre');
     const initialState = {
       isEditing: false,
       editJobId: '',
@@ -200,12 +201,14 @@ export const mainReducer = (state, action) => {
   }
   if (action.type === SET_EDIT_JOB) {
     const job = state.jobs.find((job) => job._id === action.payload.id);
-    const { _id, position, company, jobLocation, jobType, status } = job;
+    const { _id, position, company, jobLocation, jobType, status, description, postUrl } = job;
     return {
       ...state,
       isEditing: true,
       editJobId: _id,
       position,
+      description,
+      postUrl,
       company,
       jobLocation,
       jobType,
@@ -237,7 +240,7 @@ export const mainReducer = (state, action) => {
     };
   }
   if (action.type === SHOW_STATS_BEGIN) {
-    return { ...state, isLoading: true, showAlert: false }
+    return { ...state, isLoading: true, showAlert: false };
   }
   if (action.type === SHOW_STATS_SUCCESS) {
     return {
@@ -245,16 +248,23 @@ export const mainReducer = (state, action) => {
       isLoading: false,
       stats: action.payload.stats,
       monthlyApplications: action.payload.monthlyApplications,
-    }
+      lastApplications: action.payload.lastApplications,
+    };
   }
   if (action.type === CLEAR_FILTERS) {
     return {
       ...state,
-      search: "",
-      searchStatus: "All",
-      searchType: "All",
-      sort: "Latest",
-    }
+      search: '',
+      searchStatus: 'All',
+      searchType: 'All',
+      sort: 'Latest',
+    };
+  }
+  if (action.type === CHANGE_PAGE) {
+    return { ...state, page: action.payload.page };
+  }
+  if (action.type === HANDLE_CHANGE) {
+    return { ...state, page: 1, [action.payload.name]: action.payload.value };
   }
   throw new Error(`no such action: ${action.type}`);
 };

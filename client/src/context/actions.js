@@ -32,3 +32,5 @@ export const SHOW_STATS_BEGIN = 'SHOW_STATS_BEGIN';
 export const SHOW_STATS_SUCCESS = 'SHOW_STATS_SUCCESS';
 /* Clear Filters */
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+/* Change Page */
+export const CHANGE_PAGE = 'CHANGE_PAGE';
