@@ -3,9 +3,9 @@ import React from 'react';
 
 const JobsInfo = ({ icon, text }) => {
   return (
-    <Flex>
-      <Text className='icon'>{icon}</Text>
-      <Text className='text'>{text}</Text>
+    <Flex gap={2} alignItems={"center"}>
+      <Text >{icon}</Text>
+      <Text >{text}</Text>
     </Flex>
   )
 }
