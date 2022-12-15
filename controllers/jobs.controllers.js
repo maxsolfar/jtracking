@@ -7,10 +7,44 @@ import moment from 'moment';
 
 const jobsControllers = {
   getAllJobs: async (req, res, next) => {
-    const jobs = await Job.find({ createdBy: req.user.userId });
-    res
-      .status(StatusCodes.OK)
-      .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
+    const { search, status, jobType, sort } = req.query;
+    console.log(search, status, jobType, sort);
+    const queryObject = { createdBy: req.user.userId };
+    if (search) {
+      queryObject.company = { $regex: search, $options: 'i' };
+    }
+    if (status && status !== 'All') {
+      queryObject.status = status;
+    }
+    if (jobType && jobType !== 'All') {
+      queryObject.jobType = jobType;
+    }
+
+    let result = Job.find(queryObject);
+
+    if (sort === 'Lastest') {
+      result = result.sort('-createdAt');
+    }
+    if (sort === 'Oldest') {
+      result = result.sort('createdAt');
+    }
+    if (sort === 'A-Z') {
+      result = result.sort('company');
+    }
+    if (sort === 'Z-A') {
+      result = result.sort('-company');
+    }
+    // setup pagination
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 6;
+    const skip = (page - 1) * limit;
+
+    result = result.skip(skip).limit(limit);
+
+    const jobs = await result;
+    const totalJobs = await Job.countDocuments(queryObject);
+    const numOfPages = Math.ceil(totalJobs / limit);
+    res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages });
   },
   createJob: async (req, res, next) => {
     const { position, company } = req.body;
@@ -107,8 +141,16 @@ const jobsControllers = {
         return { date, count };
       })
       .reverse();
-      console.log(defaultStats);
-    res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
+
+    let lastApplications = await Job.aggregate([
+      { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
+      { $sort: { _id: 1 } },
+      { $limit: 5 },
+    ]);
+    // console.log(lastApplications);
+    res
+      .status(StatusCodes.OK)
+      .json({ defaultStats, monthlyApplications, lastApplications });
   },
 };
 
