@@ -1,11 +1,10 @@
-import { Box, Button, Flex, Heading } from '@chakra-ui/react';
-import { FormRow, FormRowSelect } from '.';
+import { Button, Flex } from '@chakra-ui/react';
+import { FormRowSelect } from '.';
 import { useAppContext } from '../context/appContext';
 
 const SearchContainer = () => {
   const {
     isLoading,
-    search,
     searchStatus,
     searchType,
     sort,
@@ -27,49 +26,53 @@ const SearchContainer = () => {
   };
 
   return (
-    <Flex>
+    <>
       <form>
-        <Heading>search form</Heading>
-        {/* search position */}
-        <Box>
-          <FormRow
-            type="text"
-            name="search"
-            value={search}
-            handleChange={handleSearch}
-          ></FormRow>
-          {/* search by status */}
+        <Flex w={"100%"} gap={4} alignItems={"flex-end"} flexWrap={["wrap", "nowrap", "nowrap", "nowrap"]}>
           <FormRowSelect
-            labelText="job status"
+            labelText="Job Status"
             name="searchStatus"
             value={searchStatus}
             handleChange={handleSearch}
-            list={['all', ...statusOptions]}
-          ></FormRowSelect>
+            list={['All', ...statusOptions]}
+          />
           <FormRowSelect
-            labelText='job type'
+            labelText='Job Type'
             name='searchType'
             value={searchType}
             handleChange={handleSearch}
-            list={['all', ...jobTypeOptions]}
-          ></FormRowSelect>
-          {/* sort */}
-
+            list={['All', ...jobTypeOptions]}
+          />
+{/*           <FormRowSelect
+            labelText='Position'
+            name='position'
+            value={sort}
+            handleChange={handleSearch}
+            list={sortOptions}
+          /> */}
           <FormRowSelect
+            labelText='Sort'
             name='sort'
             value={sort}
             handleChange={handleSearch}
             list={sortOptions}
-          ></FormRowSelect>
+          />
           <Button
             disabled={isLoading}
+            size={"100%"}
+            h={"40px"}
+            p={4}
             onClick={handleSubmit}
+            fontWeight={"normal"}
+            variant={"solid"}
+            colorScheme={"mainPurple"}
+            color={"brand.clear"}
           >
-            clear filters
+            Clear Filters
           </Button>
-        </Box>
+        </Flex>
       </form>
-    </Flex>
+    </>
   );
 };
 

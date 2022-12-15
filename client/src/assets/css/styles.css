@@ -102,6 +102,14 @@
   opacity: 1;
 }
 
+.BoxJob{
+  transition: .9s ease-in-out;
+}
+.BoxJob:hover{
+  transform: scale(1.012);
+  transition: .7s ease-in-out;
+}
+
 @media screen and (max-width: 600px) {
   .nav-link {
     width: 70%;
@@ -171,3 +179,5 @@
   transition: .5s ease-in-out;
 }
 /* Custom Input Profile Image Style */
+
+

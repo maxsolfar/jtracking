@@ -12,6 +12,7 @@ import Loading from './Loading';
 import StatsContainer from './StatsContainer';
 import ChartsContainer from './ChartsContainer';
 import StatsItem from './StatsItem';
+import LastApplications from './LastApplications';
 
 export {
   Logo,
@@ -27,5 +28,6 @@ export {
   Loading,
   StatsContainer,
   ChartsContainer,
-  StatsItem
+  StatsItem,
+  LastApplications
 };

@@ -78,7 +78,7 @@ const NavBar = () => {
             <Input focusBorderColor='brand.secondary' type="tel" placeholder="Search here..." bg={colorMode==="dark" ? "brand.primary": "brand.clear"} />
           </InputGroup> */}
           <Heading
-            display={['none', 'none', 'flex', 'flex']}
+            display={['none', 'none', 'none', 'flex']}
             pl={3}
             fontSize={'lg'}
             lineHeight={'1rem'}

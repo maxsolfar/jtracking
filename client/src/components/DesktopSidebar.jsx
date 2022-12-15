@@ -40,22 +40,20 @@ const BigSideBar = () => {
       justifyContent={'center'}
     >
       <Flex
-        h={'100%'}
-        minH={'95vh'}
+        h={'95vh'}
         w={'100%'}
         fontSize={'1.2rem'}
         fontWeight={500}
         justifyContent={'center'}
       >
         <Box
-          position={'sticky'}
           top={0}
           bg={colorMode === 'dark' ? 'brand.primary' : 'brand.clear'}
           borderRadius={12}
-          height={"100%"}
+          height={"95vh"}
           display={"flex"}
           flexDirection={"column"}
-          justifyContent={"space-between"}  
+          justifyContent={"space-between"} 
           py={8}
 /*           shadow={"md"} */
         >
