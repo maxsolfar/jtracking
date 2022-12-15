@@ -1,12 +1,24 @@
-const StatsItem = ({ count, title, icon, color, bcg }) => {
+import { Flex, Text, Heading, VStack, useColorMode } from '@chakra-ui/react';
+
+const StatsItem = ({ count, title, icon, bg }) => {
+  const { colorMode } = useColorMode();
   return (
-    <>
-      <header>
-        <span className="count">{count}</span>
-        <div className="icon">{icon}</div>
-      </header>
-      <h5 className="title">{title}</h5>
-    </>
+    <VStack
+      bg={colorMode === 'dark' ? 'brand.primary' : 'brand.clear'}
+      py={6}
+      borderRadius={12}
+      w={'100%'}
+      borderStartWidth={'4px'}
+      borderColor={bg}
+    >
+      <Flex alignItems={'center'} gap={4}>
+        <Text fontSize={'2xl'} fontWeight={"bold"} color={bg}>{count}</Text>
+        <Text fontSize={'xl'} bg={bg} color={"brand.clear"} p={2} borderRadius={8}>
+          {icon}
+        </Text>
+      </Flex>
+      <Heading fontSize={'xl'} opacity={.85}>{title}</Heading>
+    </VStack>
   );
 };
 
