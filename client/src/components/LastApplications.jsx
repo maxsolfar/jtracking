@@ -44,8 +44,9 @@ const LastJobs = () => {
         <Text>Post Url</Text>
         <Text>Status</Text>
       </SimpleGrid>
-      {jobs.map((job) => (
+      {jobs.map((job, index) => (
         <SimpleGrid
+          key={index}
           columns={5}
           columnGap={4}
           w={'full'}

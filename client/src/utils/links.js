@@ -1,4 +1,4 @@
-import { FiSettings } from 'react-icons/fi';
+import { BsQuestionCircle } from 'react-icons/bs';
 import { FaTasks, FaUserEdit } from 'react-icons/fa';
 import { BiStats } from 'react-icons/bi';
 import { MdDashboard } from 'react-icons/md';
@@ -12,7 +12,7 @@ const links = [
   },
   {
     id: 2,
-    text: 'jobs',
+    text: 'my jobs',
     path: '/dashboard/all-jobs',
     icon: <FaTasks />,
   },
@@ -28,17 +28,17 @@ const links = [
     path: '/dashboard/profile',
     icon: <FaUserEdit />,
   },
-  {
+/*   {
     id: 4,
     text: 'reports',
     path: '/dashboard/stats',
     icon: <BiStats />,
-  },
+  }, */
   {
     id: 5,
-    text: 'settings',
-    path: '/dashboard/settings',
-    icon: <FiSettings />,
+    text: 'support',
+    path: '/dashboard/support',
+    icon: <BsQuestionCircle />,
   },
 ];
 

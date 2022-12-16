@@ -3,7 +3,7 @@ import AllJobs from "./AllJobs";
 import Profile from "./Profile";
 import SharedLayout from "./SharedLayout";
 import Overview from "./Overview";
-import Settings from "./Settings";
+import Support from "./Support";
 import Stats from "./Stats.js";
 
 export{
@@ -12,6 +12,6 @@ export{
   Profile,
   SharedLayout,
   Overview,
-  Settings,
+  Support,
   Stats
 }

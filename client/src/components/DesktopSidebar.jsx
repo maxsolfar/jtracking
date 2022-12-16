@@ -9,10 +9,13 @@ import {
   Container,
   Text,
   Button,
-  Heading
+  Heading,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { MdOutlineArrowForwardIos, MdOutlineContactSupport } from "react-icons/md";
+import {
+  MdOutlineArrowForwardIos,
+  MdOutlineContactSupport,
+} from 'react-icons/md';
 
 const animationSidebar = keyframes`
   0% { margin-left: -250px;}
@@ -50,26 +53,43 @@ const BigSideBar = () => {
           top={0}
           bg={colorMode === 'dark' ? 'brand.primary' : 'brand.clear'}
           borderRadius={12}
-          height={"95vh"}
-          display={"flex"}
-          flexDirection={"column"}
-          justifyContent={"space-between"} 
+          height={'95vh'}
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'space-between'}
           py={8}
-/*           shadow={"md"} */
+          /*           shadow={"md"} */
         >
-          <Flex
-            as={'header'}
-            alignItems={'center'}
-            justifyContent={'center'}
-          >
+          <Flex as={'header'} alignItems={'center'} justifyContent={'center'}>
             <Logo />
           </Flex>
           <NavLinks />
           <Flex>
-            <Container w={'82%'} borderWidth={"1px"} textAlign="center" borderRadius={8} py={4} px={2}>
-              <Heading fontSize={"sm"} mb={2} fontWeight={"semibold"}> Need Help?</Heading>
-              <Text fontSize={"xs"} mb={2}>We will answer all your questions</Text>
-              <Button leftIcon={<MdOutlineContactSupport/>} colorScheme={"mainBlue"} rightIcon={<MdOutlineArrowForwardIos/>} size={"sm"} variant={"outline"} fontWeight={"normal"}>Contact Us</Button>
+            <Container
+              w={'82%'}
+              borderWidth={'1px'}
+              textAlign="center"
+              borderRadius={8}
+              py={4}
+              px={2}
+            >
+              <Heading fontSize={'sm'} mb={2} fontWeight={'semibold'}>
+                Need Help?
+              </Heading>
+              <Text fontSize={'xs'} mb={2}>
+                We will answer all your questions
+              </Text>
+              <Button
+                leftIcon={<MdOutlineContactSupport />}
+                colorScheme={'mainBlue'}
+                rightIcon={<MdOutlineArrowForwardIos />}
+                size={'sm'}
+                variant={'outline'}
+                fontWeight={'normal'}
+                onClick={() => window.location.href='mailto:maxsolfar@gmail.com'}
+              >
+                Contact Us
+              </Button>
             </Container>
           </Flex>
         </Box>

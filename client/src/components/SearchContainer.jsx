@@ -2,6 +2,9 @@ import { Button, Flex } from '@chakra-ui/react';
 import { FormRowSelect } from '.';
 import { useAppContext } from '../context/appContext';
 
+// md-links C/DADA/DDA      /> index.md , index2.md  ->
+// md-links C/DADA/DDA/index.md --stats  -> archivo.md
+
 const SearchContainer = () => {
   const {
     isLoading,

@@ -9,6 +9,7 @@ import {
   useColorMode,
   Text,
   Link,
+  Box,
 } from '@chakra-ui/react';
 import { FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 import { Link as NavLink } from 'react-router-dom';
@@ -36,7 +37,7 @@ const Job = ({
   date = date.format('MMM Do, YYYY');
 
   return (
-    <NavLink
+    <Box
       to="/dashboard/add-job"
       onClick={() => setEditJob(_id)}
       className={'BoxJob'}
@@ -157,7 +158,7 @@ const Job = ({
           </Button>
         </HStack>
       </Flex>
-    </NavLink>
+    </Box>
   );
 };
 

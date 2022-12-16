@@ -47,7 +47,7 @@ const AllJobs = () => {
           borderRadius={16}
         >
           <Heading fontSize={'2xl'} color={'brand.secondary'}>
-            My Jobs
+            My Applications
           </Heading>
           <Stack direction={'row'}>
             <InputGroup w={'sm'} display={['none', 'none', 'none', 'flex']}>

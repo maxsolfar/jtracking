@@ -43,7 +43,6 @@ const NavBar = () => {
 
   return (
     <Flex w={'100%'} alignItems={'center'} justifyContent={'center'} p={3}>
-      {console.log(width)}
       <Flex
         as={motion.div}
         animate={
@@ -78,6 +77,7 @@ const NavBar = () => {
             <Input focusBorderColor='brand.secondary' type="tel" placeholder="Search here..." bg={colorMode==="dark" ? "brand.primary": "brand.clear"} />
           </InputGroup> */}
           <Heading
+            as={"h2"}
             display={['none', 'none', 'none', 'flex']}
             pl={3}
             fontSize={'lg'}
@@ -86,16 +86,16 @@ const NavBar = () => {
             alignItems={'center'}
           >
             Welcome to
-            <Heading
+            <Text
               color="brand.clear"
               bg={'brand.secondary'}
-              py={1}
+              py={2}
               px={3}
               borderRadius={6}
               fontSize={'xl'}
             >
               Tracking Board
-            </Heading>
+            </Text>
           </Heading>
         </HStack>
 
