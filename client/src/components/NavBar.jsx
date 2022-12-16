@@ -125,7 +125,7 @@ const NavBar = () => {
                     </Text>
                     <Text size="sm" color="gray.500" mt="0 !important">
                       @{user?.name.toLowerCase()}
-                      {user?._id.slice(0, 3)}
+                      {Math.floor((Math.random() * (999 - 100 + 1)) + 100)}
                     </Text>
                   </VStack>
                 </MenuItem>
