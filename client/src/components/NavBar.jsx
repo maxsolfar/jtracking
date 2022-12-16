@@ -71,7 +71,7 @@ const NavBar = () => {
             <Input focusBorderColor='brand.secondary' type="tel" placeholder="Search here..." bg={colorMode==="dark" ? "brand.primary": "brand.clear"} />
           </InputGroup> */}
           <Heading
-            as={"h2"}
+            as={'h2'}
             display={['none', 'none', 'none', 'flex']}
             pl={3}
             fontSize={'lg'}
@@ -108,7 +108,7 @@ const NavBar = () => {
                 rounded="full"
                 borderColor={'brand.secondary'}
                 borderWidth={'2px'}
-                src={user.image}
+                src={user.image || 'https://i.imgur.com/S8vEizB.png'}
                 shadow={'md'}
               />
             </MenuButton>
@@ -124,8 +124,7 @@ const NavBar = () => {
                       {user?.name} {user?.lastName}
                     </Text>
                     <Text size="sm" color="gray.500" mt="0 !important">
-                      @{user?.name.toLowerCase()}
-                      {Math.floor((Math.random() * (999 - 100 + 1)) + 100)}
+                      @{user?.name.split(' ').join('').toLowerCase()}
                     </Text>
                   </VStack>
                 </MenuItem>

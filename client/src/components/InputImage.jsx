@@ -28,7 +28,7 @@ const InputImage = ({ img, onCLick }) => {
         height={["90px","90px","120px",'150px']}
         objectFit={'cover'}
         borderRadius={'50%'}
-        src={img || 'https://img.freepik.com/foto-gratis/retrato-hombre-blanco-aislado_53876-40306.jpg'}
+        src={img || 'https://i.imgur.com/S8vEizB.png'}
         alt="Image Profile"
       />
       <Input
