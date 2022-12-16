@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Error, Landing, Auth, ProtectedRoute } from './pages';
+import { Error, Auth, ProtectedRoute } from './pages';
 import {
   AddJob,
   AllJobs,
@@ -30,7 +30,6 @@ function App() {
           <Route path="support" element={<Support />} />
         </Route>
         <Route path="/" element={<Auth />} />
-        {/* <Route path="/" element={<Landing />} /> */}
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

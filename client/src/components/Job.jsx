@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import { motion, transform } from 'framer-motion';
 import {
   Button,
   Flex,
@@ -11,7 +10,7 @@ import {
   Link,
   Box,
 } from '@chakra-ui/react';
-import { FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt } from 'react-icons/fa';
 import { Link as NavLink } from 'react-router-dom';
 import { useAppContext } from '../context/appContext';
 import JobInfo from './JobInfo';

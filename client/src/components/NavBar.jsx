@@ -14,23 +14,17 @@ import {
   MenuItem,
   Button,
   Box,
-  InputGroup,
-  InputLeftElement,
-  Input,
   HStack,
-  useColorMode,
   Heading,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { useEffect, useState } from 'react';
-import { BsSearch } from 'react-icons/bs';
 import Clock from './Clock';
 
 const NavBar = () => {
   const { user, logoutUser, toggleSidebar } = useAppContext();
   const { showSidebar } = useAppContext();
-  const { colorMode } = useColorMode();
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleResize = () => {

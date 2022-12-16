@@ -1,6 +1,6 @@
 import { BsQuestionCircle } from 'react-icons/bs';
 import { FaTasks, FaUserEdit } from 'react-icons/fa';
-import { BiStats } from 'react-icons/bi';
+/* import { BiStats } from 'react-icons/bi'; */
 import { MdDashboard } from 'react-icons/md';
 
 const links = [

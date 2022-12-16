@@ -83,7 +83,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const authFetch = axios.create({
-    baseURL: 'http://localhost:5000/api/v1',
+    baseURL: 'https://jtracking.up.railway.app/api/v1',
   });
   authFetch.interceptors.request.use(
     (config) => {
@@ -120,9 +120,10 @@ const AppProvider = ({ children }) => {
 
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
+    let urlApi = 'https://jtracking.up.railway.app/api/v1/auth/register';
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/v1/auth/register',
+        urlApi,
         currentUser
       );
       const { user, token, location } = response.data;
@@ -142,9 +143,10 @@ const AppProvider = ({ children }) => {
 
   const loginUser = async (currentUser) => {
     dispatch({ type: LOGIN_USER_BEGIN });
+    let urlApi = 'https://jtracking.up.railway.app/api/v1/auth/login';
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/v1/auth/login',
+        urlApi,
         currentUser
       );
       const { user, token, location } = response.data;
