@@ -16,7 +16,7 @@ export const ColorModeSwitcher = (props) => {
     <Box as={motion.div} display={"flex"} alignItems={"center"}>
       <Switch aria-label={`Switch to ${text} mode`} isChecked={colorMode==="dark"? true : false} colorScheme={"mainBlue"} size="lg" onChange={toggleColorMode} position="relative">
         {colorMode==="dark" ?
-          <Box zIndex={2} position={"absolute"} top={"6px"} right={["6px","6px", "13.5px", "13.5px"]}><FaSun color={"#3F62FE"} opacity={.8}/></Box>
+          <Box zIndex={2} position={"absolute"} top={"6px"} right={props.origin === "auth" ? ["13px","13px", "13.5px", "13.5px"] : ["13px","6px", "13.5px", "13.5px"]}><FaSun color={"#3F62FE"} opacity={.8}/></Box>
         :
           <Box zIndex={2} position={"absolute"} top={"6px"} left={["6px","6px", "6px", "6px"]}><FaMoon color={"#2D3250"} opacity={.8}/></Box>
         } 

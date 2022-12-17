@@ -46,8 +46,8 @@ const AllJobs = () => {
           justifyContent={'space-between'}
           borderRadius={16}
         >
-          <Heading fontSize={'2xl'} color={'brand.secondary'}>
-            My Applications
+          <Heading fontSize={["xl","xl", "xl",'2xl']} color={'brand.secondary'}>
+            My Jobs
           </Heading>
           <Stack direction={'row'}>
             <InputGroup w={'sm'} display={['none', 'none', 'none', 'flex']}>

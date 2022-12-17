@@ -26,7 +26,7 @@ const LastJobs = () => {
         Last {jobs.length} Applications
       </Heading>
       <SimpleGrid
-        columns={5}
+        columns={[3,4,4,5]}
         columnGap={4}
         w={'full'}
         justifyItems={'center'}
@@ -38,16 +38,16 @@ const LastJobs = () => {
         color={'brand.secondary'}
         fontWeight={'bold'}
       >
-        <Text>Company</Text>
-        <Text>Position</Text>
-        <Text>Job Type</Text>
-        <Text>Post Url</Text>
-        <Text>Status</Text>
+        <Text fontSize={["sm", "sm", "sm", "md"]}>Company</Text>
+        <Text fontSize={["sm", "sm", "sm", "md"]} display={["none","flex", "flex", "flex"]}>Position</Text>
+        <Text fontSize={["sm", "sm", "sm", "md"]}>Job Type</Text>
+        <Text fontSize={["sm", "sm", "sm", "md"]} display={["none","none", "none", "flex"]}>Post Url</Text>
+        <Text fontSize={["sm", "sm", "sm", "md"]}>Status</Text>
       </SimpleGrid>
       {jobs.map((job, index) => (
         <SimpleGrid
           key={index}
-          columns={5}
+          columns={[3,4,4,5]}
           columnGap={4}
           w={'full'}
           justifyItems={'center'}
@@ -56,10 +56,10 @@ const LastJobs = () => {
           borderBottomWidth={'1px'}
           borderBottomColor={colorMode === "dark" ? 'rgba(255,255,255,.1)' : 'rgba(21,21,21,.1)'}
         >
-          <Text>{job.company}</Text>
-          <Text>{job.position}</Text>
-          <Text>{job.jobType}</Text>
-          <Link href={job.postUrl} isExternal>
+          <Text fontSize={["sm", "md", "md", "md"]}>{job.company}</Text>
+          <Text display={["none","flex", "flex", "flex"]}>{job.position}</Text>
+          <Text fontSize={["sm", "md", "md", "md"]}>{job.jobType}</Text>
+          <Link display={["none","none", "none", "flex"]} href={job.postUrl} isExternal>
             Post Link
           </Link>
           <Text

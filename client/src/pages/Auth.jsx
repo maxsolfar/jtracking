@@ -103,13 +103,11 @@ const Auth = () => {
         position={'relative'}
       >
         <Box
-          as={motion.div}
-          animation={bounceAnimation}
           position={'absolute'}
           top={5}
           left={5}
         >
-          <ColorModeSwitcher />
+          <ColorModeSwitcher origin={"auth"} />
         </Box>
 
         <Box
