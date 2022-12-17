@@ -134,7 +134,7 @@ const NavBar = () => {
               </MenuItem>
             </MenuList>
           </Menu>
-          <ColorModeSwitcher />
+          <ColorModeSwitcher origin={"navbar"} />
         </Flex>
       </Flex>
     </Flex>
